@@ -6,8 +6,8 @@ public class MateriaPractica extends Materia{
     int horasPractica;
     int numLaboratorios;
 
-    public MateriaPractica(String codigo, String nombre, int horasSemanales, int creditos, String semestre, Profesor profesor, ArrayList<Estudiante> listaEstudiantes, int horasPractica, int numLaboratorios) {
-        super(codigo, nombre, horasSemanales, creditos, semestre, profesor, listaEstudiantes);
+    public MateriaPractica(String codigo, String nombre, int horasSemanales, int creditos, String semestre, Profesor profesor, int horasPractica, int numLaboratorios) {
+        super(codigo, nombre, horasSemanales, creditos, semestre, profesor);
         this.horasPractica = horasPractica;
         this.numLaboratorios = numLaboratorios;
     }
