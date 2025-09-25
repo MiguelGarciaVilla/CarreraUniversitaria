@@ -15,6 +15,7 @@ public class Profesor {
         this.titulo = titulo;
         this.añosExperiencia = añosExperiencia;
         this.listaMaterias = new ArrayList<>();
+
     }
 
     public String getIdentificador() {
@@ -56,4 +57,5 @@ public class Profesor {
     public void setListaMaterias(ArrayList<Materia> listaMaterias) {
         this.listaMaterias = listaMaterias;
     }
+
 }

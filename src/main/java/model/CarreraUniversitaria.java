@@ -4,45 +4,33 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class CarreraUniversitaria {
-    ArrayList<MateriaPractica> listaMateriasPracticas;
     ArrayList<Materia> listaMaterias;
-    ArrayList<EstudiantePreGrado> listaEstudiantePreGrado;
-    ArrayList<EstudiantePostGrado> listaEstudiantePosGrado;
-    ArrayList<ProfesorPlanta> listaProfesoresPlanta;
-    ArrayList<ProfesorCatedratico> listaProfesoresCatedraticos;
+    ArrayList<Estudiante> listaEstudiantes;
+    ArrayList<Profesor> listaProfesores;
 
 
-    public CarreraUniversitaria(ArrayList<MateriaPractica> listaMateriasPracticas, ArrayList<Materia> listaMaterias, ArrayList<EstudiantePreGrado> listaEstudiantePreGrado, ArrayList<EstudiantePostGrado> listaEstudiantePosGrado, ArrayList<ProfesorPlanta> listaProfesoresPlanta, ArrayList<ProfesorCatedratico> listaProfesoresCatedraticos) {
-        this.listaMateriasPracticas = listaMateriasPracticas;
-        this.listaMaterias = listaMaterias;
-        this.listaEstudiantePreGrado = listaEstudiantePreGrado;
-        this.listaEstudiantePosGrado = listaEstudiantePosGrado;
-        this.listaProfesoresPlanta = listaProfesoresPlanta;
-        this.listaProfesoresCatedraticos = listaProfesoresCatedraticos;
+
+    public CarreraUniversitaria() {
+
+        this.listaMaterias = new  ArrayList<>();
+        this.listaEstudiantes = new  ArrayList<>();
+        this.listaProfesores= new  ArrayList<>();
     }
 
-    public ArrayList<EstudiantePreGrado> getListaEstudiantePreGrado() {
-        return listaEstudiantePreGrado;
+    public ArrayList<Estudiante> getListaEstudiante() {
+        return listaEstudiantes;
     }
 
-    public void setListaEstudiantePreGrado(ArrayList<EstudiantePreGrado> listaEstudiantePreGrado) {
-        this.listaEstudiantePreGrado = listaEstudiantePreGrado;
+    public void setListaEstudiante(ArrayList<Estudiante> listaEstudiante) {
+        this.listaEstudiantes = listaEstudiante;
     }
 
-    public ArrayList<EstudiantePostGrado> getListaEstudiantePosGrado() {
-        return listaEstudiantePosGrado;
+    public ArrayList<Profesor> getListaProfesores() {
+        return listaProfesores;
     }
 
-    public void setListaEstudiantePosGrado(ArrayList<EstudiantePostGrado> listaEstudiantePosGrado) {
-        this.listaEstudiantePosGrado = listaEstudiantePosGrado;
-    }
-
-    public ArrayList<MateriaPractica> getListaMateriasPracticas() {
-        return listaMateriasPracticas;
-    }
-
-    public void setListaMateriasPracticas(ArrayList<MateriaPractica> listaMateriasPracticas) {
-        this.listaMateriasPracticas = listaMateriasPracticas;
+    public void setListaProfesores(ArrayList<Profesor> listaProfesores) {
+        this.listaProfesores = listaProfesores;
     }
 
     public ArrayList<Materia> getListaMaterias() {
@@ -53,64 +41,12 @@ public class CarreraUniversitaria {
         this.listaMaterias = listaMaterias;
     }
 
-    public ArrayList<ProfesorPlanta> getListaProfesoresPlanta() {
-        return listaProfesoresPlanta;
-    }
-
-    public void setListaProfesoresPlanta(ArrayList<ProfesorPlanta> listaProfesoresPlanta) {
-        this.listaProfesoresPlanta = listaProfesoresPlanta;
-    }
-
-    public ArrayList<ProfesorCatedratico> getListaProfesoresCatedraticos() {
-        return listaProfesoresCatedraticos;
-    }
-
-    public void setListaProfesoresCatedraticos(ArrayList<ProfesorCatedratico> listaProfesoresCatedraticos) {
-        this.listaProfesoresCatedraticos = listaProfesoresCatedraticos;
-    }
-    public int creditosDeUnEstudiante(Estudiante estudiante){
-        int creditos= 0;
-        creditos+= estudiante.creditosTotalesSemestre();
-        return creditos;
-    }
-
-    public int calcularHorasSemanalesMateria(String codigo){
-        int horasSemanales= 0;
-        for(Materia materia:listaMaterias){
-            if(materia.getCodigo().equals(codigo)){
-                horasSemanales+= materia.getHorasSemanales();
-            }
-        }
-        for(MateriaPractica materia: listaMateriasPracticas){
-            if(materia.getCodigo().equals(codigo)){
-                horasSemanales+= materia.getHorasSemanales();
-            }
-        }
-        return horasSemanales;
-    }
-
-
-
-    public String inscribirEstudiantesPreGrado (EstudiantePreGrado estudiante, ArrayList<Materia>  materias) {
-        String resultado= "Las materias han sido registradas con exito.";
-        for(Materia m:materias){
-            m.registrarEstudiantePreGrado(estudiante);
-        }
-        return resultado;
-    }
-
-    public String inscribirEstudiantesPostGrado (EstudiantePostGrado estudiante, ArrayList<Materia>  materias) {
-        String resultado= "Las materias han sido registradas con exito.";
-        for(Materia m:materias){
-            m.registrarEstudiantePostGrado(estudiante);
-        }
-        return resultado;
-    }
 
 
 
 
-    public String registarMateriaTeorica(Materia materia) {
+
+    public String registarMateria(Materia materia) {
         String resultado = "La mateira ya existe";
         if (buscarMateria(materia).isEmpty()) {
             listaMaterias.add(materia);
@@ -118,53 +54,109 @@ public class CarreraUniversitaria {
         }
         return resultado;
     }
-    public String registarMateriaPractica(MateriaPractica materia) {
-        String resultado = "La mateira ya existe";
-        if (buscarMateriaPractica(materia).isEmpty()) {
-            listaMaterias.add(materia);
-            resultado= "Materia registrada con exito";
-        }
-        return resultado;
-    }
 
-    public ArrayList<Materia> consultarMateriasSemestre(String semestre){
-        ArrayList<Materia> resultado= new ArrayList<>();
+    public String consultarMateriasSemestre(String semestre){
+        String resultado= "Materias: ";
         for(Materia materia:listaMaterias) {
             if (materia.getSemestre().equalsIgnoreCase(semestre)) {
-                resultado.add(materia);
+                resultado+= materia.getNombre()+", ";
             }
         }
         return resultado;
     }
 
-    public ArrayList<EstudiantePreGrado> listarEstudiantesDeUnaAsignatura(Materia materia) {
-        ArrayList<EstudiantePreGrado> resultado = materia.getListaEstudiantePreGrado();
+    public String asociarProfesorMateria(Profesor profesor, Materia materia) {
+        String resultado = profesor.getNombre()+" fue asociado correctamente a la materia "+materia.getNombre();
+        if(materia.getProfesor()!=null) {
+            resultado= "Error, esta materia ya tiene un profesor asociado";
+        }else{
+            materia.setProfesor(profesor);
+        }
         return resultado;
     }
+
+    public String inscribirEstudianteMaterias (Estudiante estudiante, ArrayList<Materia>  materias) {
+        String resultado= "";
+        for(Materia m:materias){
+            if(m.noEstaElEstudianteRegistrado(estudiante)){
+                m.registrarEstudiante(estudiante);
+                estudiante.registrarMateria(m);
+                resultado+= "La materia "+m.getNombre()+" se ha registrado correctamente.\n";
+            }else{
+                resultado+= "La materia "+m.getNombre()+" no ha sido registrada, el estudiante ya esta registrado en esta materia.\n";
+            }
+        }
+        return resultado;
+    }
+    public String listarEstudiantesDeUnaAsignatura(Materia materia) {
+        String resultado = "Estudiantes "+materia.getNombre()+":\n";
+        ArrayList<Estudiante> estudiantes = materia.getListaEstudiantes();
+        for(Estudiante estudiante:estudiantes){
+            resultado+= estudiante.getNombre()+"\n";
+        }
+        return resultado;
+    }
+
+    public String horasSemanalesMateria(String codigo){
+        String resultado = "La materia de codigo "+codigo+" no ha sido encontrada";
+        for(Materia materia:listaMaterias){
+            if (materia.getCodigo().equals(codigo)) {
+                resultado="la materia "+materia.getNombre()+" tiene "+ materia.getHorasSemanales()+" horas semanales";
+            }
+        }
+        return  resultado;
+    }
+    public String creditosDeUnEstudiante(Estudiante estudiante){
+        String resultado= "El estudiante "+estudiante.getNombre()+" no esta registrado";
+        if(buscarEstudiante(estudiante).isPresent()){
+            resultado= "El estudiante "+estudiante.getNombre()+" tiene "+estudiante.creditosTotalesSemestre()+" creditos en el semestre que cursa";
+        }
+        return resultado;
+    }
+
+
+
+
+
+
+    public String registrarEstudiante(Estudiante estudiante){
+        String mensaje= "El estudiante ya se encuentra resgistrado";
+        if(buscarEstudiante(estudiante).isEmpty()){
+            listaEstudiantes.add(estudiante);
+            mensaje= "Estudiante registrado correctamente";
+        }
+        return mensaje;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public Optional<Materia> buscarMateria(Materia materia){
         return listaMaterias.stream().filter(materia1 -> materia1.getCodigo().equals(materia.getCodigo())).findFirst();
     }
-    public Optional<MateriaPractica> buscarMateriaPractica(MateriaPractica materia){
-        return listaMateriasPracticas.stream().filter(materia1 -> materia1.getCodigo().equals(materia.getCodigo())).findFirst();
+
+
+    public Optional<Estudiante> buscarEstudiante(Estudiante estudiante){
+        return listaEstudiantes.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
     }
 
-    public Optional<EstudiantePreGrado> buscarEstudiante(EstudiantePreGrado estudiante){
-        return listaEstudiantePreGrado.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
+
+    public Optional<Profesor> buscarProfesor(Profesor profesor){
+        return listaProfesores.stream().filter(profesor1 -> profesor1.getIdentificador().equals(profesor.getIdentificador())).findFirst();
     }
 
-    public Optional<EstudiantePostGrado> buscarEstudiante(EstudiantePostGrado estudiante){
-        return listaEstudiantePosGrado.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
-    }
 
-    public Optional<ProfesorCatedratico> buscarProfesor(ProfesorCatedratico profesor){
-        return listaProfesoresCatedraticos.stream().filter(profesor1 -> profesor1.getIdentificador().equals(profesor.getIdentificador())).findFirst();
-    }
-
-    public Optional<ProfesorPlanta> buscarProfesor(ProfesorPlanta profesor){
-        return listaProfesoresPlanta.stream().filter(profesor1 -> profesor1.getIdentificador().equals(profesor.getIdentificador())).findFirst();
-    }
 
 
 

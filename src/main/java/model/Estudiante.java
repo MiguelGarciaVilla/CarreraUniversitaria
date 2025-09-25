@@ -10,7 +10,6 @@ public class Estudiante {
      String programa;
      String semestre;
      ArrayList<Materia> listaMaterias;
-     ArrayList<MateriaPractica> listaMateriasPracticas;
 
     public Estudiante(String identificador, String nombre, String documento, String programa, String semestre) {
         this.identificador = identificador;
@@ -19,16 +18,9 @@ public class Estudiante {
         this.programa = programa;
         this.semestre = semestre;
         this.listaMaterias = new ArrayList<>();
-        this.listaMateriasPracticas= new ArrayList<>();
+
     }
 
-    public ArrayList<MateriaPractica> getListaMateriasPracticas() {
-        return listaMateriasPracticas;
-    }
-
-    public void setListaMateriasPracticas(ArrayList<MateriaPractica> listaMateriasPracticas) {
-        this.listaMateriasPracticas = listaMateriasPracticas;
-    }
 
     public String getIdentificador() {
         return identificador;
@@ -74,10 +66,12 @@ public class Estudiante {
         for(Materia materia : listaMaterias){
             creditosTotales+= materia.getCreditos();
         }
-        for(MateriaPractica materia : listaMateriasPracticas){
-            creditosTotales+= materia.getCreditos();
-        }
         return creditosTotales;
+    }
+
+
+    public void registrarMateria(Materia materia){
+        listaMaterias.add(materia);
     }
 
 

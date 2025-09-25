@@ -10,8 +10,7 @@ public class Materia {
     int creditos;
     String semestre;
     Profesor profesor;
-    ArrayList<EstudiantePostGrado> listaEstudiantePostGrado;
-    ArrayList<EstudiantePreGrado> listaEstudiantePreGrado;
+    ArrayList<Estudiante> listaEstudiantes;;
 
     public Materia(String codigo, String nombre, int horasSemanales, int creditos, String semestre, Profesor profesor) {
         this.codigo = codigo;
@@ -20,25 +19,11 @@ public class Materia {
         this.creditos = creditos;
         this.semestre = semestre;
         this.profesor = profesor;
-        this.listaEstudiantePostGrado = new ArrayList<>();
-        this.listaEstudiantePreGrado = new ArrayList<>();
+        this.listaEstudiantes = new ArrayList<>();
+
     }
 
-    public ArrayList<EstudiantePostGrado> getListaEstudiantePostGrado() {
-        return listaEstudiantePostGrado;
-    }
 
-    public void setListaEstudiantePostGrado(ArrayList<EstudiantePostGrado> listaEstudiantePostGrado) {
-        this.listaEstudiantePostGrado = listaEstudiantePostGrado;
-    }
-
-    public ArrayList<EstudiantePreGrado> getListaEstudiantePreGrado() {
-        return listaEstudiantePreGrado;
-    }
-
-    public void setListaEstudiantePreGrado(ArrayList<EstudiantePreGrado> listaEstudiantePreGrado) {
-        this.listaEstudiantePreGrado = listaEstudiantePreGrado;
-    }
 
     public String getCodigo() {
         return codigo;
@@ -88,33 +73,34 @@ public class Materia {
         this.profesor = profesor;
     }
 
-    public boolean registrarEstudiantePreGrado(EstudiantePreGrado estudiantePreGrado) {
-        boolean resultado = false;
-        if(buscarEstudiantePreGrado(estudiantePreGrado).isEmpty()){
-            listaEstudiantePreGrado.add(estudiantePreGrado);
-            resultado = true;
+    public ArrayList<Estudiante> getListaEstudiantes() {
+        return listaEstudiantes;
+    }
 
+    public void setListaEstudiantes(ArrayList<Estudiante> listaEstudiantes) {
+        this.listaEstudiantes = listaEstudiantes;
+    }
+
+    public String toString(){
+        return "Codigo: "+codigo+", Nombre: "+nombre+", Horas Semanales: "+horasSemanales+", Creditos: "+creditos+", Semestre: "+semestre+", Profesor: "+profesor.getNombre()+", Estudiantes: "+listaEstudiantes.toString();
+    }
+
+
+    public boolean noEstaElEstudianteRegistrado(Estudiante estudiante){
+        boolean resultado = false;
+        if(buscarEstudiante(estudiante).isEmpty()){
+            return true;
         }
         return  resultado;
     }
-    public boolean registrarEstudiantePostGrado(EstudiantePostGrado estudiantePostGrado) {
-        boolean resultado = false;
-        if(buscarEstudiantePostGrado(estudiantePostGrado).isEmpty()){
-            listaEstudiantePostGrado.add(estudiantePostGrado);
-            resultado = true;
-        }
-        return  resultado;
+
+    public void registrarEstudiante(Estudiante estudiante){
+        listaEstudiantes.add(estudiante);
     }
 
-    public Optional<EstudiantePreGrado> buscarEstudiantePreGrado(EstudiantePreGrado estudiante){
-        return listaEstudiantePreGrado.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
+    public Optional<Estudiante> buscarEstudiante(Estudiante estudiante){
+        return listaEstudiantes.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
     }
-
-    public Optional<EstudiantePostGrado> buscarEstudiantePostGrado(EstudiantePostGrado estudiante){
-        return listaEstudiantePostGrado.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
-    }
-
-
 
 
 

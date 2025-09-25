@@ -27,4 +27,8 @@ public class MateriaPractica extends Materia{
     public void setNumLaboratorios(int numLaboratorios) {
         this.numLaboratorios = numLaboratorios;
     }
+
+    public String toString(){
+        return super.toString()+", Horas Practicas: "+horasPractica+", Laboratorios: "+numLaboratorios;
+    }
 }

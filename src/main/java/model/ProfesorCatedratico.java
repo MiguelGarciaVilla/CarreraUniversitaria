@@ -1,28 +1,28 @@
 package model;
 
 public  class ProfesorCatedratico extends Profesor {
-    int horasPractica;
-    int numLaboratorios;
+    int numHoras;
+    String empresaExterna;
 
-    public ProfesorCatedratico(String identificador, String nombre, String titulo, String añosExperiencia, int horasPractica, int numLaboratorios) {
+    public ProfesorCatedratico(String identificador, String nombre, String titulo, String añosExperiencia, int numHoras, String empresaExterna) {
         super(identificador, nombre, titulo, añosExperiencia);
-        this.horasPractica = horasPractica;
-        this.numLaboratorios = numLaboratorios;
+        this.numHoras = numHoras;
+        this.empresaExterna = empresaExterna;
     }
 
-    public int getHorasPractica() {
-        return horasPractica;
+    public int getNumHoras() {
+        return numHoras;
     }
 
-    public void setHorasPractica(int horasPractica) {
-        this.horasPractica = horasPractica;
+    public void setNumHoras(int numHoras) {
+        this.numHoras = numHoras;
     }
 
-    public int getNumLaboratorios() {
-        return numLaboratorios;
+    public String getEmpresaExterna() {
+        return empresaExterna;
     }
 
-    public void setNumLaboratorios(int numLaboratorios) {
-        this.numLaboratorios = numLaboratorios;
+    public void setEmpresaExterna(String empresaExterna) {
+        this.empresaExterna = empresaExterna;
     }
 }
