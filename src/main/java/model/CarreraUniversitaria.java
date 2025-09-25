@@ -278,7 +278,11 @@ public class CarreraUniversitaria {
         return listaEstudiantes.stream().filter(estudiante1 -> estudiante1.getIdentificador().equals(estudiante.getIdentificador())).findFirst();
     }
 
-
+    /**
+     * Metodo para buscar un profesor dentro de una lista de profesores.
+     * @param profesor
+     * @return
+     */
     public Optional<Profesor> buscarProfesor(Profesor profesor){
         return listaProfesores.stream().filter(profesor1 -> profesor1.getIdentificador().equals(profesor.getIdentificador())).findFirst();
     }

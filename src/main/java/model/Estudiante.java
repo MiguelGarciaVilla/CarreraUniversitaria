@@ -61,6 +61,10 @@ public class Estudiante {
         return "Identificador: "+identificador+", Nombre: "+nombre+", Documento: "+documento+", Programa: "+programa+", Semestre: "+semestre+", Materias: "+listaMaterias.toString();
     }
 
+    /**
+     * Este es un Metodo que permite calcular los creditos totales de una materia en un semestre.
+     * @return
+     */
     public int creditosTotalesSemestre(){
         int creditosTotales = 0;
         for(Materia materia : listaMaterias){
@@ -69,7 +73,10 @@ public class Estudiante {
         return creditosTotales;
     }
 
-
+    /**
+     * Este es un metodo que permite registrar una materia en la listaMaterias de esta clase Estudiante.
+     * @param materia
+     */
     public void registrarMateria(Materia materia){
         listaMaterias.add(materia);
     }
