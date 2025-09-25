@@ -18,10 +18,7 @@ public class Estudiante {
         this.programa = programa;
         this.semestre = semestre;
         this.listaMaterias = new ArrayList<>();
-
     }
-
-
     public String getIdentificador() {
         return identificador;
     }
@@ -52,13 +49,16 @@ public class Estudiante {
     public void setSemestre(String semestre) {
         this.semestre = semestre;
     }
-
     public ArrayList<Materia> getListaMaterias() {
         return listaMaterias;
     }
-
     public void setListaMaterias(ArrayList<Materia> listaMaterias) {
         this.listaMaterias = listaMaterias;
+    }
+
+    @Override
+    public String toString(){
+        return "Identificador: "+identificador+", Nombre: "+nombre+", Documento: "+documento+", Programa: "+programa+", Semestre: "+semestre+", Materias: "+listaMaterias.toString();
     }
 
     public int creditosTotalesSemestre(){
@@ -73,6 +73,5 @@ public class Estudiante {
     public void registrarMateria(Materia materia){
         listaMaterias.add(materia);
     }
-
 
 }

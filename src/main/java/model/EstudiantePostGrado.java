@@ -7,12 +7,16 @@ public class EstudiantePostGrado extends Estudiante {
         super(identificador, nombre, documento, programa, semestre);
         this.temaInvestigacion = temaInvestigacion;
     }
-
     public String getTemaInvestigacion() {
         return temaInvestigacion;
     }
     public void setTemaInvestigacion(String temaInvestigacion) {
         this.temaInvestigacion = temaInvestigacion;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString()+", Tema Investigacion: "+temaInvestigacion;
     }
 
 }

@@ -11,24 +11,21 @@ public class MateriaPractica extends Materia{
         this.horasPractica = horasPractica;
         this.numLaboratorios = numLaboratorios;
     }
-
     public int getHorasPractica() {
         return horasPractica;
     }
-
     public void setHorasPractica(int horasPractica) {
         this.horasPractica = horasPractica;
     }
-
     public int getNumLaboratorios() {
         return numLaboratorios;
     }
-
     public void setNumLaboratorios(int numLaboratorios) {
         this.numLaboratorios = numLaboratorios;
     }
 
+    @Override
     public String toString(){
-        return super.toString()+", Horas Practicas: "+horasPractica+", Laboratorios: "+numLaboratorios;
+        return super.toString()+", Horas Practica: "+horasPractica+", Laboratorios: "+numLaboratorios;
     }
 }

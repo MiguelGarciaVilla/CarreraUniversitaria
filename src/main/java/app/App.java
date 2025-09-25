@@ -12,10 +12,10 @@ public class App {
         Materia quimicos = new Materia("0003", "Quimicos y Reactivos", 4, 3, "Primero", juanLuis);
 
         //Prueba metodo registrar materias teoricas y practicas.
-        System.out.println(ingenieriaQuimica.registarMateria( matematica ));
-        System.out.println(ingenieriaQuimica.registarMateria( matematica ));
-        System.out.println(ingenieriaQuimica.registarMateria( lengua));
-        System.out.println(ingenieriaQuimica.registarMateria( quimicos )+"\n\n");
+        System.out.println(ingenieriaQuimica.registrarMateria( matematica ));
+        System.out.println(ingenieriaQuimica.registrarMateria( matematica ));
+        System.out.println(ingenieriaQuimica.registrarMateria( lengua));
+        System.out.println(ingenieriaQuimica.registrarMateria( quimicos )+"\n\n");
 
 
         ArrayList<Materia> a= ingenieriaQuimica.getListaMaterias();
@@ -52,15 +52,6 @@ public class App {
         //Prueba creditos de un estudiante.
         String creditosJuan= ingenieriaQuimica.creditosDeUnEstudiante(juan);
         System.out.println("\n\n"+creditosJuan);
-
-
-
-
-
-
-
-
-
 
 
 

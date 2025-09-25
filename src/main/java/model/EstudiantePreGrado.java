@@ -7,11 +7,15 @@ public class EstudiantePreGrado extends Estudiante {
         super(identificador, nombre, documento, programa, semestre);
         this.promedio = promedio;
     }
-
     public double getPromedio() {
         return promedio;
     }
     public void setPromedio(double promedio) {
         this.promedio = promedio;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString()+", Promedio: "+promedio;
     }
 }
