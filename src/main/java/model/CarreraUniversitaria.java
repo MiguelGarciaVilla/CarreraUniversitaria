@@ -66,7 +66,7 @@ public class CarreraUniversitaria {
      * @return
      */
     public String asociarProfesorMateria(Profesor profesor, Materia materia) {
-        String resultado = "Error, el profesor o estudiante no esta registrado";
+        String resultado = "Error, el profesor o materia no esta registrado";
         if (buscarProfesor(profesor).isPresent() && buscarMateria(materia).isPresent()) {
 
             resultado = profesor.getNombre() + " fue asociado correctamente a la materia " + materia.getNombre();
@@ -350,7 +350,7 @@ public class CarreraUniversitaria {
      */
     public Optional<String> buscarSemestre(String semestre) {
         return listaMaterias.stream()
-                .filter(materia1 -> materia1.getSemestre().equals(semestre))
+                .filter(materia1 -> materia1.getSemestre().equalsIgnoreCase(semestre))
                 .findFirst()
                 .map(Materia::getSemestre);
     }

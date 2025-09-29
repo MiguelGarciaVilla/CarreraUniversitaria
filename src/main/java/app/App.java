@@ -30,6 +30,8 @@ public class App {
         //Prueba asociar un profesor a una materia.
         MateriaPractica calculo = new MateriaPractica("0004", "Calculo", 4, 3, "Primero", null, 3, 2);
         ProfesorCatedratico pedroJose= new ProfesorCatedratico("1092434", "Pedro Jose", "Doctor", "5", 6, "Comfenalco");
+        ingenieriaQuimica.registrarProfesor(pedroJose);
+        ingenieriaQuimica.registrarMateria(calculo);
         System.out.println("\n\n"+ingenieriaQuimica.asociarProfesorMateria(pedroJose, calculo)+"\n\n");
 
         //Prueba incribir estudiante en varias materias.
@@ -40,8 +42,8 @@ public class App {
         System.out.println(ingenieriaQuimica.inscribirEstudianteMaterias(juan, materias));
 
         //Prueba listar estudiantes de una asignatura determinada.
-        String estudiantesMatematicas= ingenieriaQuimica.listarEstudiantesDeUnaAsignatura(matematica);
-        System.out.println("\n"+estudiantesMatematicas);
+        ArrayList<Estudiante> estudiantesMatematicas= ingenieriaQuimica.listarEstudiantesDeUnaAsignatura(matematica);
+        System.out.println("\n"+estudiantesMatematicas.toString());
 
         //Prueba ver horas semales de una materia.
         String horasMatematicas= ingenieriaQuimica.horasSemanalesMateria("0001");

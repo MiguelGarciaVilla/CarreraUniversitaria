@@ -67,7 +67,7 @@ public class Materia {
 
     @Override
     public String toString(){
-        return "Codigo: "+codigo+", Nombre: "+nombre+", Horas Semanales: "+horasSemanales+", Creditos: "+creditos+", Semestre: "+semestre+", Profesor: "+profesor.getNombre()+", Estudiantes: "+listaEstudiantes.toString();
+        return "Codigo: "+codigo+", Nombre: "+nombre+", Horas Semanales: "+horasSemanales+", Creditos: "+creditos+", Semestre: "+semestre+", Profesor: "+(profesor != null ? profesor.getNombre() : "Sin profesor")+", Estudiantes: "+listaEstudiantes.toString();
     }
 
     /**

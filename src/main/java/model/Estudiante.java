@@ -58,7 +58,7 @@ public class Estudiante {
 
     @Override
     public String toString(){
-        return "Identificador: "+identificador+", Nombre: "+nombre+", Documento: "+documento+", Programa: "+programa+", Semestre: "+semestre+", Materias: "+listaMaterias.toString();
+        return "Identificador: "+identificador+", Nombre: "+nombre+", Documento: "+documento+", Programa: "+programa+", Semestre: "+semestre;
     }
 
     /**
