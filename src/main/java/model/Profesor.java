@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Profesor {
     String identificador;
@@ -10,7 +11,7 @@ public class Profesor {
     ArrayList<Materia> listaMaterias;
 
     public Profesor(String identificador, String nombre, String titulo, String añosExperiencia) {
-        this.identificador = identificador;
+        this.identificador = Objects.requireNonNull(identificador, "La id es obligatoria");
         this.nombre = nombre;
         this.titulo = titulo;
         this.añosExperiencia = añosExperiencia;
